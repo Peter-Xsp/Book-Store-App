@@ -1,8 +1,17 @@
 const Order = require("../models/Order");
+const Book = require("../models/Book");
 
 const createOrder = async (req, res) => {
-  const { userId, books, total } = req.body;
+  const { userId, books } = req.body;
   try {
+    let total = 0;
+    for (const book of books) {
+      const item = await Book.findById(book.bookId);
+      if (item) {
+        total += item.price * book.quantity;
+      }
+    }
+
     const order = new Order({ user: userId, books, total });
     await order.save();
     res.status(201).json(order);
