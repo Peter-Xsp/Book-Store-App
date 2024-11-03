@@ -1,0 +1,16 @@
+$background-color: #fff1e7;
+$text-color: #4b2e2a;
+$shadow-color: rgba(0, 0, 0, 0.25);
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: $background-color;
+  text-align: center;
+  color: $text-color;
+  font-family: "Georgia", serif;
+  border: 20px solid #4b2e2a;
+}

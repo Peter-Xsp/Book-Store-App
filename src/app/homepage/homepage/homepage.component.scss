@@ -1,0 +1,19 @@
+.title {
+  font-size: 4rem;
+  margin-bottom: 3rem;
+  letter-spacing: 2px;
+  color: #4b2e2a;
+  text-transform: uppercase;
+  position: relative;
+  text-shadow: 0 0.05ch 0.05px brown, 2px 2px 0 white;
+}
+
+.line {
+  position: relative;
+}
+
+.button-group {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
