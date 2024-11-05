@@ -5,18 +5,18 @@ const authMiddleware = require("../middleware/authMiddleware");
 const upload = require("../middleware/uploadMiddleware");
 
 router.post(
-  "/books",
+  "",
   authMiddleware,
   upload.single("image"),
   bookController.createBook
 );
-router.get("/books", bookController.getBooks);
+router.get("", bookController.getBooks);
 router.put(
-  "/books/:id",
+  "/:id",
   authMiddleware,
   upload.single("image"),
   bookController.updateBook
 );
-router.delete("/books/:id", authMiddleware, bookController.deleteBook);
+router.delete(":id", authMiddleware, bookController.deleteBook);
 
 module.exports = router;

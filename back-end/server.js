@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
 const bookRoutes = require("./routes/bookRoutes");
@@ -11,10 +12,12 @@ connectDB();
 
 app.use(express.json());
 
+app.use(cors());
+
 app.use("/api/auth/", authRoutes);
-app.use("/api/", bookRoutes);
-app.use("/api/", orderRoutes);
-app.use("/api/", userRoutes);
+app.use("/api/books/", bookRoutes);
+app.use("/api/orders", orderRoutes);
+app.use("/api/users/user", userRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

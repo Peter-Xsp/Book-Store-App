@@ -1,3 +1,36 @@
 <app-homepage-background>
-  <p>login works!</p>
+  <div class="login-card">
+    <div class="header">
+      <button routerLink="" type="button" class="back">↩</button>
+      <h2>Login</h2>
+    </div>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="email"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="password"
+          required
+        />
+      </div>
+      @if (errorMessage) {
+      <div class="error-message">
+        {{ errorMessage }}
+      </div>
+      }
+      <button type="submit" class="btn-login">Login</button>
+    </form>
+  </div>
 </app-homepage-background>
