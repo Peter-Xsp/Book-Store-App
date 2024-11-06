@@ -1,0 +1,28 @@
+<div class="shop-background">
+  <header class="shop-header">
+    <div class="header-content">
+      <button routerLink="/home" class="icon-button" aria-label="Home">
+        <span class="material-icons">home</span>
+      </button>
+      <button
+        routerLink="/my-profile"
+        class="icon-button"
+        aria-label="My Profile"
+      >
+        <span class="material-icons">account_circle</span>
+      </button>
+      <h1>Book Store</h1>
+      <button
+        routerLink="/shopping-card"
+        class="icon-button"
+        aria-label="Shopping Cart"
+      >
+        <span class="material-icons">shopping_cart</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="content">
+    <ng-content></ng-content>
+  </div>
+</div>
