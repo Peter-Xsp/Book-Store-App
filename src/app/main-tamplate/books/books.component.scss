@@ -1,0 +1,78 @@
+.books-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+li {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 16px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+li:hover {
+  transform: scale(1.03);
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+li img {
+  width: 100%;
+  height: auto;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+h3 {
+  font-size: 1.25em;
+  color: #333;
+  margin: 8px 0;
+  font-weight: bold;
+}
+
+.description {
+  font-size: 0.9em;
+  color: #666;
+  line-height: 1.4;
+}
+
+h6 {
+  font-size: 1em;
+  color: #007b5e;
+  margin: 8px 0;
+}
+
+.hover-add {
+  display: none;
+  padding: 8px 6px;
+  margin-top: 5px;
+  font-size: 0.8em;
+  background-color: #36f601;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+li:hover .hover-add {
+  display: block;
+}

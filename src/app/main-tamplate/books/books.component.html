@@ -1,3 +1,17 @@
 <app-main-tamplate>
-  <p>books works!</p>
+  <div class="books-container">
+    @if (books.length > 0) {
+    <ul>
+      @for (book of books; track $index) {
+      <li (click)="addToCart(book)">
+        <h3>{{ book.title }}</h3>
+        <img src="{{ book.imageURL }}" alt="{{ book.title }}" />
+        <p class="description">{{ book.description }}</p>
+        <h6>{{ book.price }} €</h6>
+        <p class="hover-add">+ Add To Cart</p>
+      </li>
+      }
+    </ul>
+    }
+  </div>
 </app-main-tamplate>

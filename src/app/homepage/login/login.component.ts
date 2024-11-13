@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 
 import { HomeBackroundComponent } from '../home-backround.component';
 
@@ -14,6 +14,7 @@ import { HomeBackroundComponent } from '../home-backround.component';
 })
 export class LoginComponent {
   private httpClient = inject(HttpClient);
+  private router = inject(Router);
 
   email: string = '';
   password: string = '';
@@ -30,11 +31,11 @@ export class LoginComponent {
     this.httpClient.post<{ token: string }>(this.apiUrl, userData).subscribe(
       (response) => {
         localStorage.setItem('token', response.token);
-        console.log('Login successful');
+
+        this.router.navigate(['/home']);
       },
-      (error) => {
+      (err) => {
         this.errorMessage = 'Invalid email or password. Please try again.';
-        console.error('Login failed:', error);
       }
     );
   }

@@ -30,12 +30,10 @@ export class SignupComponent {
     };
 
     this.httpClient.post(this.apiUrl, userData).subscribe({
-      next: (response) => {
-        console.log('User created successfully', response);
+      next: () => {
         alert('Signup successful');
       },
-      error: (error) => {
-        console.error('Error during signup', error);
+      error: () => {
         this.errorMessage = 'Signup failed!';
       },
     });
