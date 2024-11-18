@@ -7,7 +7,7 @@ export interface Book {
   description: string;
   price: number;
   imageURL: string;
-  id?: number;
+  _id: string;
 }
 
 @Injectable({
@@ -20,5 +20,9 @@ export class BookService {
 
   getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(this.apiUrl);
+  }
+
+  getBookById(bookId: string): Observable<Book> {
+    return this.http.get<Book>(`${this.apiUrl}/${bookId}`);
   }
 }

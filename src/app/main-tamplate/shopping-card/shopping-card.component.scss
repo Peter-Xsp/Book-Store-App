@@ -57,7 +57,7 @@
   padding-top: 10px;
 }
 
-button {
+.delete {
   border: none;
   background: none;
   color: red;
@@ -70,7 +70,25 @@ button {
   justify-content: center;
 }
 
-button:hover {
+.delete:hover {
   transform: scale(1.02);
   color: rgb(248, 91, 91);
+}
+
+.send-order {
+  border: #5e3b3b;
+  background-color: #6b4f4f;
+  color: white;
+  cursor: pointer;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 8px 5px;
+}
+.send-order:hover {
+  background-color: white;
+  color: #6b4f4f;
 }

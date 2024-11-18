@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 import { HomeBackroundComponent } from '../home-backround.component';
 
@@ -14,6 +14,8 @@ import { HomeBackroundComponent } from '../home-backround.component';
 })
 export class SignupComponent {
   private httpClient = inject(HttpClient);
+
+  constructor(private router: Router) {}
 
   name: string = '';
   email: string = '';
@@ -32,6 +34,12 @@ export class SignupComponent {
     this.httpClient.post(this.apiUrl, userData).subscribe({
       next: () => {
         alert('Signup successful');
+
+        setTimeout(() => {
+          this.router.navigate(['']).then(() => {
+            window.location.reload();
+          });
+        }, 5);
       },
       error: () => {
         this.errorMessage = 'Signup failed!';

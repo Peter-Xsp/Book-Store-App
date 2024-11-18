@@ -32,9 +32,10 @@ $shadow-color: rgba(0, 0, 0, 0.25);
         text-align: center;
         color: $light-color;
         font-family: Georgia, "Times New Roman", Times, serif;
+        cursor: default;
       }
 
-      .icon-button {
+      button {
         background: none;
         border: none;
         color: $light-color;
@@ -49,6 +50,10 @@ $shadow-color: rgba(0, 0, 0, 0.25);
         &:hover {
           text-shadow: 0 0 25px black, 0 0 2px rgb(11, 32, 50);
         }
+      }
+
+      .logout:hover {
+        color: red;
       }
     }
   }

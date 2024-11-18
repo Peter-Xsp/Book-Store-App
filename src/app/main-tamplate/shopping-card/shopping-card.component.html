@@ -6,7 +6,7 @@
       @for (book of cartBooks; track $index) {
       <li>
         <h3>{{ book.title }}</h3>
-        <button (click)="removeBook(book)">
+        <button (click)="removeBook(book)" class="delete">
           <span class="material-icons"> delete </span>
         </button>
         <p>Price: ${{ book.price }}</p>
@@ -18,5 +18,6 @@
     <p>The cart is empty.</p>
     }
     <h3>Total Cost: {{ totalCost }}€</h3>
+    <button (click)="sendOrder()" class="send-order">SEND ORDER</button>
   </div>
 </app-main-tamplate>

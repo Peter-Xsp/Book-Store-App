@@ -17,7 +17,7 @@ export class CartService {
   }
 
   removeFromCart(book: Book) {
-    const bookIndex = this.cartBooks.findIndex((b) => b.id === book.id);
+    const bookIndex = this.cartBooks.findIndex((b) => b._id === book._id);
     if (bookIndex !== -1) {
       this.cartBooks.splice(bookIndex, 1);
       this.cartBooks$.next(this.cartBooks);
