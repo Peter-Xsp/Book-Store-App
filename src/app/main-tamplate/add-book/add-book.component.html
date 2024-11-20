@@ -1,3 +1,54 @@
 <app-main-tamplate>
-  <p>OKEYY!!</p>
+  <div class="signup-card">
+    <div class="header">
+      <button routerLink="/home" type="button" class="back">↩</button>
+      <h2>Add Book</h2>
+    </div>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          [(ngModel)]="title"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input
+          type="text"
+          id="description"
+          name="description"
+          [(ngModel)]="description"
+        />
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input
+          type="number"
+          id="price"
+          name="price"
+          [(ngModel)]="price"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="imageURL">Image URL</label>
+        <input
+          type="url"
+          id="imageURL"
+          name="imageURL"
+          [(ngModel)]="imageURL"
+        />
+      </div>
+      @if (errorMessage) {
+      <div class="error-message">
+        {{ errorMessage }}
+      </div>
+      }
+      <button type="submit" class="btn-signup">Submit</button>
+    </form>
+  </div>
 </app-main-tamplate>

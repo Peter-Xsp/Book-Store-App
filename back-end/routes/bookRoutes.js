@@ -21,7 +21,7 @@ router.put(
   bookController.updateBook
 );
 router.delete(
-  ":id",
+  "/:id",
   authMiddleware,
   adminMiddleware,
   bookController.deleteBook

@@ -32,7 +32,7 @@ export class BooksComponent implements OnInit {
     this.isAdmin = this.authService.getUserRole() === 'admin';
   }
 
-  addToCart(book: Book, index: number): void {
+  onAddToCart(book: Book, index: number): void {
     this.cartServise.addToCart(book);
 
     this.addedToCart[index] = true;
@@ -41,7 +41,24 @@ export class BooksComponent implements OnInit {
     }, 300);
   }
 
-  addBook(): void {
+  onAddBook(): void {
     this.router.navigate(['/add-book']);
+  }
+
+  onDeleteBook(_id: string): void {
+    if (confirm(`delete this book?`)) {
+      this.bookService.deleteBook(_id).subscribe({
+        next: () => {
+          window.location.reload();
+        },
+        error: () => {
+          alert('Failed to delete the book');
+        },
+      });
+    }
+  }
+
+  onUpdateBook(): void {
+    console.log('book updated');
   }
 }
