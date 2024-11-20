@@ -9,6 +9,7 @@ import { OrdersComponent } from './main-tamplate/orders/orders.component';
 import { authGuard } from './auth.guard';
 import { AddBookComponent } from './main-tamplate/add-book/add-book.component';
 import { authAdminGuard } from './auth-admin.guard';
+import { UpdateBookComponent } from './main-tamplate/update-book/update-book.component';
 
 export const routes: Routes = [
   {
@@ -41,6 +42,11 @@ export const routes: Routes = [
   {
     path: 'add-book',
     component: AddBookComponent,
+    canActivate: [authGuard, authAdminGuard],
+  },
+  {
+    path: 'update-book/:id',
+    component: UpdateBookComponent,
     canActivate: [authGuard, authAdminGuard],
   },
 ];

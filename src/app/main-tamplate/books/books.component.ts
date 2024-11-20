@@ -58,7 +58,7 @@ export class BooksComponent implements OnInit {
     }
   }
 
-  onUpdateBook(): void {
-    console.log('book updated');
+  onUpdateBook(_id: string): void {
+    this.router.navigate(['/update-book', _id]);
   }
 }

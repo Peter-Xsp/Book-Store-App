@@ -23,6 +23,14 @@ export class BookService {
     return this.http.get<Book[]>(this.apiUrl);
   }
 
+  updateBook(_id: string, book: Partial<Book>): Observable<Book> {
+    return this.http.put<Book>(`${this.apiUrl}/${_id}`, book);
+  }
+
+  getBookById(_id: string): Observable<Book> {
+    return this.http.get<Book>(`${this.apiUrl}/${_id}`);
+  }
+
   deleteBook(_id: string): Observable<Book> {
     return this.http.delete<Book>(`${this.apiUrl}/${_id}`);
   }

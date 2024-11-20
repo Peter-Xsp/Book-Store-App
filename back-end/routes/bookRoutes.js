@@ -13,6 +13,7 @@ router.post(
   bookController.createBook
 );
 router.get("", bookController.getBooks);
+router.get("/:id", authMiddleware, adminMiddleware, bookController.getBookById);
 router.put(
   "/:id",
   authMiddleware,
