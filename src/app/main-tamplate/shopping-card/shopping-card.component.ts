@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrl: './shopping-card.component.scss',
 })
 export class ShoppingCardComponent implements OnInit {
-  cartBooks: Book[] = [];
+  cartBooks: { book: Book; quantity: number }[] = [];
   totalCost: number = 0;
 
   constructor(
@@ -26,31 +26,36 @@ export class ShoppingCardComponent implements OnInit {
     this.cartService.getCartBooks().subscribe((books) => {
       this.cartBooks = books;
       this.totalCost = this.cartService.getTotalCost();
-      console.log(books);
     });
   }
 
-  removeBook(book: Book): void {
+  incrementQuantity(book: Book): void {
+    this.cartService.addToCart(book);
+  }
+
+  decrementQuantity(book: Book): void {
     this.cartService.removeFromCart(book);
   }
 
-  sendOrder(): void {
-    const userI = localStorage.getItem('userId')!;
+  removeBook(book: Book): void {
+    this.cartService.removeAllFromCart(book);
+  }
 
-    const orderBooks = this.cartBooks.map((book) => ({
-      bookId: String(book._id),
-      quantity: 1,
+  sendOrder(): void {
+    const userId = localStorage.getItem('userId')!;
+
+    const orderBooks = this.cartBooks.map(({ book, quantity }) => ({
+      book: { title: book.title, _id: book._id, price: book.price },
+      quantity,
     }));
 
-    this.orderService.createOrder(userI, orderBooks).subscribe(
+    this.orderService.createOrder(userId, orderBooks).subscribe(
       () => {
         alert('order placed successfully!');
-
-        setTimeout(() => {
-          this.router.navigate(['/my-orders']).then(() => {
-            window.location.reload();
-          });
-        }, 5);
+        this.cartService.clearCart();
+        this.router.navigate(['/my-orders']).then(() => {
+          window.location.reload();
+        });
       },
       (error) => {
         console.error('Error order:', error);

@@ -7,7 +7,7 @@
     <p class="books">Books:</p>
     <ul>
       @for (book of order.books; track $index) {
-      <li>Book: {{ book.title }} × {{ book.quantity }}</li>
+      <li>Book: {{ book.book.title }} × {{ book.quantity }}</li>
       }
     </ul>
     <hr />

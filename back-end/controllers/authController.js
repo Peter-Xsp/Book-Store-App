@@ -8,7 +8,7 @@ const jwtSecret = process.env.JWT_SECRET;
 const signup = async (req, res) => {
   const { name, email, password } = req.body;
   try {
-    const user = new User({ name, email, password });
+    const user = new User({ name, email, password, role: req.body.role });
     await user.save();
     res.status(201).json({ message: "User created succesfully" });
   } catch (error) {
@@ -23,7 +23,7 @@ const login = async (req, res) => {
     if (!user || !(await bcrypt.compare(password, user.password))) {
       return res.status(400).json({ message: "Invalid credentials" });
     }
-    const token = jwt.sign({ userId: user.id }, jwtSecret, {
+    const token = jwt.sign({ userId: user._id, role: user.role }, jwtSecret, {
       expiresIn: "1h",
     });
     res.json({ token, userId: user.id });

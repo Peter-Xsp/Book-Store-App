@@ -3,12 +3,19 @@
     @if (books.length > 0) {
     <ul>
       @for (book of books; track $index) {
-      <li (click)="addToCart(book)">
+      <li (click)="addToCart(book, $index)">
         <h3>{{ book.title }}</h3>
         <img src="{{ book.imageURL }}" alt="{{ book.title }}" />
         <p class="description">{{ book.description }}</p>
         <h6>{{ book.price }} €</h6>
         <p class="hover-add">+ Add To Cart</p>
+        @if (addedToCart[$index]) {
+        <div class="added-message">✓ Added</div>
+        }
+      </li>
+      } @if (isAdmin) {
+      <li (click)="addBook()">
+        <h3 class="add-book">+ Add a New Book</h3>
       </li>
       }
     </ul>

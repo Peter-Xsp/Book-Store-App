@@ -1,19 +1,15 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 
-export const authGuard: CanActivateFn = (route, state) => {
+export const authGuard: CanActivateFn = () => {
   const router = inject(Router);
-  if (typeof window !== 'undefined') {
-    const token = localStorage.getItem('token');
 
-    if (token) {
-      return true;
-    } else {
-      router.navigate(['']);
-      return false;
-    }
-  } else {
+  const token = localStorage.getItem('token');
+
+  if (!token) {
     router.navigate(['']);
     return false;
+  } else {
+    return true;
   }
 };

@@ -5,11 +5,24 @@
     <ul>
       @for (book of cartBooks; track $index) {
       <li>
-        <h3>{{ book.title }}</h3>
-        <button (click)="removeBook(book)" class="delete">
+        <h3>{{ book.book.title }}</h3>
+        <div class="quantity-controls">
+          <button
+            class="quantity"
+            (click)="decrementQuantity(book.book)"
+            [disabled]="book.quantity <= 1"
+          >
+            -
+          </button>
+          {{ book.quantity }}
+          <button class="quantity" (click)="incrementQuantity(book.book)">
+            +
+          </button>
+        </div>
+        <button (click)="removeBook(book.book)" class="delete">
           <span class="material-icons"> delete </span>
         </button>
-        <p>Price: ${{ book.price }}</p>
+        <p>Price: {{ book.book.price }}€</p>
       </li>
       }
     </ul>

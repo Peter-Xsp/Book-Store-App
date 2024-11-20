@@ -7,6 +7,8 @@ import { BooksComponent } from './main-tamplate/books/books.component';
 import { ShoppingCardComponent } from './main-tamplate/shopping-card/shopping-card.component';
 import { OrdersComponent } from './main-tamplate/orders/orders.component';
 import { authGuard } from './auth.guard';
+import { AddBookComponent } from './main-tamplate/add-book/add-book.component';
+import { authAdminGuard } from './auth-admin.guard';
 
 export const routes: Routes = [
   {
@@ -35,5 +37,10 @@ export const routes: Routes = [
     path: 'my-orders',
     component: OrdersComponent,
     canActivate: [authGuard],
+  },
+  {
+    path: 'add-book',
+    component: AddBookComponent,
+    canActivate: [authGuard, authAdminGuard],
   },
 ];

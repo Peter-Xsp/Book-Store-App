@@ -6,22 +6,39 @@ import { Book } from '../books/book.service';
   providedIn: 'root',
 })
 export class CartService {
-  private cartBooks: Book[] = [];
-  private cartBooks$ = new BehaviorSubject<Book[]>(this.cartBooks);
-  private idCounter = 1;
+  private cartBooks: { book: Book; quantity: number }[] = [];
+  private cartBooks$ = new BehaviorSubject<{ book: Book; quantity: number }[]>(
+    this.cartBooks
+  );
 
-  addToCart(book: Book) {
-    const bookWithId = { ...book, id: this.idCounter++ };
-    this.cartBooks.push(bookWithId);
+  addToCart(book: Book): void {
+    const existingBook = this.cartBooks.find(
+      (b) => b.book.title === book.title
+    );
+    if (existingBook) {
+      existingBook.quantity++;
+    } else {
+      this.cartBooks.push({ book, quantity: 1 });
+    }
     this.cartBooks$.next(this.cartBooks);
   }
 
-  removeFromCart(book: Book) {
-    const bookIndex = this.cartBooks.findIndex((b) => b._id === book._id);
+  removeFromCart(book: Book): void {
+    const bookIndex = this.cartBooks.findIndex(
+      (b) => b.book.title === book.title
+    );
     if (bookIndex !== -1) {
-      this.cartBooks.splice(bookIndex, 1);
+      this.cartBooks[bookIndex].quantity--;
+      if (this.cartBooks[bookIndex].quantity <= 0) {
+        this.cartBooks.splice(bookIndex, 1);
+      }
       this.cartBooks$.next(this.cartBooks);
     }
+  }
+
+  removeAllFromCart(book: Book): void {
+    this.cartBooks = this.cartBooks.filter((b) => b.book.title !== book.title);
+    this.cartBooks$.next(this.cartBooks);
   }
 
   getCartBooks() {
@@ -29,6 +46,14 @@ export class CartService {
   }
 
   getTotalCost(): number {
-    return this.cartBooks.reduce((total, book) => total + book.price, 0);
+    return this.cartBooks.reduce(
+      (total, b) => total + b.book.price * b.quantity,
+      0
+    );
+  }
+
+  clearCart(): void {
+    this.cartBooks = [];
+    this.cartBooks$.next(this.cartBooks);
   }
 }

@@ -6,7 +6,7 @@ const createOrder = async (req, res) => {
   try {
     const mergedBooks = books.reduce((acc, currentBook) => {
       const existingBook = acc.find(
-        (item) => item.bookId === currentBook.bookId
+        (item) => item.book.title === currentBook.book.title
       );
 
       if (existingBook) {
@@ -19,7 +19,7 @@ const createOrder = async (req, res) => {
 
     let total = 0;
     for (const book of mergedBooks) {
-      const item = await Book.findById(book.bookId);
+      const item = await Book.findById(book.book);
       if (item) {
         total += item.price * book.quantity;
       }
@@ -37,10 +37,6 @@ const createOrder = async (req, res) => {
 const getOrders = async (req, res) => {
   try {
     const userId = req.user._id;
-
-    if (!userId) {
-      return res.status(401).json({ error: "Unauthorized: No user ID found" });
-    }
 
     const orders = await Order.find({ user: userId }).populate("books.book");
 

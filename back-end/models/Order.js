@@ -4,6 +4,7 @@ const orderSchema = new mongoose.Schema({
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
   books: [
     {
+      _id: false,
       book: { type: mongoose.Schema.Types.ObjectId, ref: "Book" },
       quantity: { type: Number, default: 1 },
     },

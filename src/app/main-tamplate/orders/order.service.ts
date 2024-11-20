@@ -5,7 +5,10 @@ import { Observable } from 'rxjs';
 export interface Order {
   _id: string;
   user: string;
-  books: { title: string; quantity: number }[];
+  books: {
+    book: { _id: string; title: string; price: number };
+    quantity: number;
+  }[];
   total: number;
   createdAt: string;
 }
@@ -20,7 +23,10 @@ export class OrderService {
 
   createOrder(
     userId: string,
-    books: { bookId: string; quantity: number }[]
+    books: {
+      book: { _id: string; title: string; price: number };
+      quantity: number;
+    }[]
   ): Observable<Order> {
     const orderData = { userId, books };
     return this.http.post<Order>(this.apiUrl, orderData);

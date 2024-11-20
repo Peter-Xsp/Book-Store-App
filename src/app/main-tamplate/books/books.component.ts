@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MainTamplateComponent } from '../main-tamplate.component';
 import { Book, BookService } from './book.service';
 import { CartService } from '../shopping-card/cart.service';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-books',
@@ -12,17 +14,34 @@ import { CartService } from '../shopping-card/cart.service';
 })
 export class BooksComponent implements OnInit {
   books: Book[] = [];
+  addedToCart: boolean[] = [];
+  isAdmin: boolean = false;
 
   constructor(
     private bookService: BookService,
-    private cartServise: CartService
+    private cartServise: CartService,
+    private authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.bookService.getBooks().subscribe((data) => (this.books = data));
+    this.bookService.getBooks().subscribe((data) => {
+      this.books = data;
+    });
+
+    this.isAdmin = this.authService.getUserRole() === 'admin';
   }
 
-  addToCart(book: Book) {
+  addToCart(book: Book, index: number): void {
     this.cartServise.addToCart(book);
+
+    this.addedToCart[index] = true;
+    setTimeout(() => {
+      this.addedToCart[index] = false;
+    }, 300);
+  }
+
+  addBook(): void {
+    this.router.navigate(['/add-book']);
   }
 }
