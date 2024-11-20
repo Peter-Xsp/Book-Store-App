@@ -1,0 +1,71 @@
+.user-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.user-item {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+.user-item:hover {
+  background-color: #f1f1f1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.user-role {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.user-email {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+p {
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .user-item {
+    padding: 12px;
+  }
+
+  .user-name {
+    font-size: 1rem;
+  }
+
+  .user-email {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-item {
+    padding: 10px;
+  }
+
+  .user-name {
+    font-size: 0.9rem;
+  }
+
+  .user-email {
+    font-size: 0.85rem;
+  }
+}

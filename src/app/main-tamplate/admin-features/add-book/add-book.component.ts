@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
-import { MainTamplateComponent } from '../main-tamplate.component';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { MainTamplateComponent } from '../../main-tamplate.component';
 
 @Component({
   selector: 'app-add-book',

@@ -17,7 +17,7 @@ export interface Book {
 export class BookService {
   private apiUrl = 'http://localhost:3000/api/books';
 
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(private http: HttpClient) {}
 
   getBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(this.apiUrl);

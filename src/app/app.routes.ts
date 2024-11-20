@@ -7,9 +7,10 @@ import { BooksComponent } from './main-tamplate/books/books.component';
 import { ShoppingCardComponent } from './main-tamplate/shopping-card/shopping-card.component';
 import { OrdersComponent } from './main-tamplate/orders/orders.component';
 import { authGuard } from './auth.guard';
-import { AddBookComponent } from './main-tamplate/add-book/add-book.component';
-import { authAdminGuard } from './auth-admin.guard';
-import { UpdateBookComponent } from './main-tamplate/update-book/update-book.component';
+import { authAdminGuard } from './main-tamplate/admin-features/auth-admin.guard';
+import { UpdateBookComponent } from './main-tamplate/admin-features/update-book/update-book.component';
+import { AddBookComponent } from './main-tamplate/admin-features/add-book/add-book.component';
+import { AllUsersComponent } from './main-tamplate/admin-features/all-users/all-users.component';
 
 export const routes: Routes = [
   {
@@ -47,6 +48,11 @@ export const routes: Routes = [
   {
     path: 'update-book/:id',
     component: UpdateBookComponent,
+    canActivate: [authGuard, authAdminGuard],
+  },
+  {
+    path: 'all-users',
+    component: AllUsersComponent,
     canActivate: [authGuard, authAdminGuard],
   },
 ];

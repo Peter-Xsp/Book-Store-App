@@ -4,6 +4,15 @@
       <button routerLink="/home" class="icon-button" aria-label="Home">
         <span class="material-icons">home</span>
       </button>
+      @if (isAdmin) {
+      <button
+        routerLink="/all-users"
+        class="icon-button"
+        aria-label="My Profile"
+      >
+        <span class="material-icons"> view_list </span>
+      </button>
+      } @else {
       <button
         routerLink="/my-orders"
         class="icon-button"
@@ -11,6 +20,7 @@
       >
         <span class="material-icons">account_circle</span>
       </button>
+      }
       <h1>Book Store</h1>
       <button
         routerLink="/shopping-card"
