@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MainTamplateComponent } from '../main-tamplate.component';
-import { Book, BookService } from './book.service';
-import { CartService } from '../shopping-card/cart.service';
-import { AuthService } from '../auth.service';
+import { Book, BookService } from '../services/book.service';
+import { CartService } from '../services/cart.service';
+import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({

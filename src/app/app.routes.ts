@@ -11,6 +11,7 @@ import { authAdminGuard } from './main-tamplate/admin-features/auth-admin.guard'
 import { UpdateBookComponent } from './main-tamplate/admin-features/update-book/update-book.component';
 import { AddBookComponent } from './main-tamplate/admin-features/add-book/add-book.component';
 import { AllUsersComponent } from './main-tamplate/admin-features/all-users/all-users.component';
+import { ManageProfileComponent } from './main-tamplate/manage-profile/manage-profile.component';
 
 export const routes: Routes = [
   {
@@ -54,5 +55,10 @@ export const routes: Routes = [
     path: 'all-users',
     component: AllUsersComponent,
     canActivate: [authGuard, authAdminGuard],
+  },
+  {
+    path: 'manage-profile',
+    component: ManageProfileComponent,
+    canActivate: [authGuard],
   },
 ];

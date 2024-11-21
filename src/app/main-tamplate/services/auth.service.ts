@@ -16,6 +16,17 @@ export class AuthService {
 
     const decodedToken = this.jwtHelper.decodeToken(token);
 
-    return decodedToken.role || '';
+    return decodedToken?.role || '';
+  }
+
+  getUserId(): string {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.log('No token found in localStorage');
+      return '';
+    }
+
+    const decodedToken = this.jwtHelper.decodeToken(token);
+    return decodedToken?.userId || '';
   }
 }

@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MainTamplateComponent } from '../main-tamplate.component';
-import { Order, OrderService } from './order.service';
+import { Order, OrderService } from '../services/order.service';
 import { DatePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-orders',
   standalone: true,
-  imports: [MainTamplateComponent, DatePipe],
+  imports: [MainTamplateComponent, DatePipe, RouterLink],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.scss',
 })

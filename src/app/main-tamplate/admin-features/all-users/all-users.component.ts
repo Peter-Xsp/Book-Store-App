@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MainTamplateComponent } from '../../main-tamplate.component';
-import { User, UserService } from './user.service';
+import { User, UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-all-users',

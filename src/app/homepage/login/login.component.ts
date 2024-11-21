@@ -28,21 +28,17 @@ export class LoginComponent {
       password: this.password,
     };
 
-    this.httpClient
-      .post<{ token: string; userId: string }>(this.apiUrl, userData)
-      .subscribe(
-        (response) => {
-          const { token, userId } = response;
+    this.httpClient.post<{ token: string }>(this.apiUrl, userData).subscribe(
+      (response) => {
+        const { token } = response;
 
-          localStorage.setItem('token', token);
+        localStorage.setItem('token', token);
 
-          localStorage.setItem('userId', userId);
-
-          this.router.navigate(['/home']);
-        },
-        (err) => {
-          this.errorMessage = 'Invalid email or password. Please try again.';
-        }
-      );
+        this.router.navigate(['/home']);
+      },
+      (err) => {
+        this.errorMessage = 'Invalid email or password. Please try again.';
+      }
+    );
   }
 }

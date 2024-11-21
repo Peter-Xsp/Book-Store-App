@@ -1,10 +1,20 @@
-.update-book-container {
+.my-profile-container {
   max-width: 600px;
   margin: auto;
   background-color: #f9f9f9;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  .back {
+    position: absolute;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    margin-right: 10px;
+    padding: 0;
+  }
 
   h2 {
     text-align: center;
@@ -19,8 +29,7 @@
       margin-bottom: 5px;
     }
 
-    input,
-    textarea {
+    input {
       width: 100%;
       padding: 10px;
       border: 1px solid #ccc;
@@ -40,6 +49,20 @@
 
     &:hover {
       background-color: #45a049;
+    }
+  }
+
+  .delete-acc {
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-decoration-line: underline;
+    margin-top: 15px;
+    font-size: 1.5vh;
+    color: red;
+
+    &:hover {
+      color: rgb(135, 27, 27);
     }
   }
 }

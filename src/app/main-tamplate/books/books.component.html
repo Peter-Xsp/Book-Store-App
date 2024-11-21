@@ -14,9 +14,10 @@
         <p class="description">{{ book.description }}</p>
         <h6>{{ book.price }} €</h6>
         @if (isAdmin === false) { @if (addedToCart[$index]) {
-        <p class="hover-add">+ Add To Cart</p>
         <div class="added-message">✓ Added</div>
-        } } @else {
+        }
+        <p class="hover-add">+ Add To Cart</p>
+        } @else {
         <button (click)="onUpdateBook(book._id)" class="update-book">
           Update This Book
         </button>

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MainTamplateComponent } from '../main-tamplate.component';
-import { Book } from '../books/book.service';
-import { CartService } from './cart.service';
-import { OrderService } from '../orders/order.service';
+import { Book } from '../services/book.service';
+import { CartService } from '../services/cart.service';
+import { OrderService } from '../services/order.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-shopping-card',
@@ -15,10 +16,12 @@ import { Router } from '@angular/router';
 export class ShoppingCardComponent implements OnInit {
   cartBooks: { book: Book; quantity: number }[] = [];
   totalCost: number = 0;
+  userId: string = '';
 
   constructor(
     private cartService: CartService,
     private orderService: OrderService,
+    private authService: AuthService,
     private router: Router
   ) {}
 
@@ -42,14 +45,14 @@ export class ShoppingCardComponent implements OnInit {
   }
 
   sendOrder(): void {
-    const userId = localStorage.getItem('userId')!;
+    this.userId = this.authService.getUserId();
 
     const orderBooks = this.cartBooks.map(({ book, quantity }) => ({
       book: { title: book.title, _id: book._id, price: book.price },
       quantity,
     }));
 
-    this.orderService.createOrder(userId, orderBooks).subscribe(
+    this.orderService.createOrder(this.userId, orderBooks).subscribe(
       () => {
         alert('order placed successfully!');
         this.cartService.clearCart();

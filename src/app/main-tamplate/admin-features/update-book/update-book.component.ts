@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MainTamplateComponent } from '../../main-tamplate.component';
-import { Book, BookService } from '../../books/book.service';
+import { Book, BookService } from '../../services/book.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 

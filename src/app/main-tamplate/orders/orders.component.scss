@@ -50,3 +50,16 @@ ul li {
   margin-bottom: 5px;
   cursor: default;
 }
+
+.manage-account {
+  border: none;
+  background: none;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+}
+.manage-account:hover {
+  text-shadow: 1px 0px 2px #595757;
+  color: #595757;
+  transform: scale(1.1);
+}

@@ -1,0 +1,45 @@
+<app-main-tamplate>
+  <div class="my-profile-container">
+    <button routerLink="/my-orders" type="button" class="back">↩</button>
+    <h2>My Profile:</h2>
+    <form action="">
+      <div class="form-group">
+        <label for="name"> Name:</label>
+        <input
+          type="text"
+          id="name"
+          [(ngModel)]="user.name"
+          name="name"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="name"> Email:</label>
+        <input
+          type="text"
+          id="email"
+          [(ngModel)]="user.email"
+          name="email"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="name"> Password:</label>
+        <input
+          type="text"
+          id="Password"
+          [(ngModel)]="user.password"
+          name="Password"
+          placeholder="*******"
+          required
+        />
+      </div>
+      <button (click)="updateUser()" type="submit" class="btn-submit">
+        Confirm Changes
+      </button>
+      <button (click)="deleteUser()" class="delete-acc">
+        Delete the Account.
+      </button>
+    </form>
+  </div>
+</app-main-tamplate>

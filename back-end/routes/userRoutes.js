@@ -5,7 +5,8 @@ const authMiddleware = require("../middleware/authMiddleware");
 const adminMiddleware = require("../middleware/adminMiddleware");
 
 router.get("/all", authMiddleware, adminMiddleware, userController.getUsers);
-router.put("", authMiddleware, userController.updateUser);
-router.delete("", authMiddleware, userController.deleteUser);
+router.get("/me", authMiddleware, userController.getCurrentUser);
+router.put("/me", authMiddleware, userController.updateUser);
+router.delete("/me", authMiddleware, userController.deleteUser);
 
 module.exports = router;
