@@ -35,12 +35,13 @@
       </div>
 
       <div class="form-group">
-        <label for="imageURL">Image URL</label>
+        <label for="image">Image</label>
         <input
-          type="text"
-          id="imageURL"
-          [(ngModel)]="book.imageURL"
-          name="imageURL"
+          type="file"
+          id="image"
+          accept="image/*"
+          name="image"
+          #fileInput
         />
       </div>
 

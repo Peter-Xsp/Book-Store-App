@@ -10,7 +10,7 @@
         </button>
         }
         <h3>{{ book.title }}</h3>
-        <img src="{{ book.imageURL }}" alt="{{ book.title }}" />
+        <img src="{{ book.image }}" alt="{{ book.title }}" />
         <p class="description">{{ book.description }}</p>
         <h6>{{ book.price }} €</h6>
         @if (isAdmin === false) { @if (addedToCart[$index]) {

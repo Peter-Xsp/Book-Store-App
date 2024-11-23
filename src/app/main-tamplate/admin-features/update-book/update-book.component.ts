@@ -17,8 +17,10 @@ export class UpdateBookComponent implements OnInit {
     title: '',
     description: '',
     price: 0,
-    imageURL: '',
+    image: '',
   };
+
+  fileInput: any;
 
   constructor(
     private bookService: BookService,
@@ -45,21 +47,24 @@ export class UpdateBookComponent implements OnInit {
   }
 
   updateBook(): void {
-    this.bookService
-      .updateBook(this.book._id, {
-        title: this.book.title,
-        description: this.book.description,
-        price: this.book.price,
-        imageURL: this.book.imageURL,
-      })
-      .subscribe({
-        next: () => {
-          alert('Book updated successfully');
-          this.router.navigate(['/home']);
-        },
-        error: () => {
-          alert('Failed to update the book');
-        },
-      });
+    const formData = new FormData();
+
+    formData.append('title', this.book.title);
+    formData.append('description', this.book.description);
+    formData.append('price', this.book.price.toString());
+
+    if (this.fileInput && this.fileInput.files.length > 0) {
+      formData.append('image', this.fileInput.files[0]);
+    }
+
+    this.bookService.updateBook(this.book._id, formData).subscribe({
+      next: () => {
+        alert('Book updated successfully');
+        this.router.navigate(['/home']);
+      },
+      error: () => {
+        alert('Failed to update the book');
+      },
+    });
   }
 }

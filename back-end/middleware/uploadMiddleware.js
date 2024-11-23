@@ -1,27 +1,17 @@
 const multer = require("multer");
 const path = require("path");
 
-const storage = multer.diskStorage({
-  destination: (req, file, res) => {
-    res(null, "uploads/");
-  },
-  filename: (req, file, res) => {
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    res(
-      null,
-      `${file.fieldname}-${uniqueSuffix}${path.extname(file.originalname)}`
-    );
-  },
-});
+const storage = multer.memoryStorage();
 
-const imgFilter = (req, file, res) => {
+const imgFilter = (req, file, cb) => {
   const types = /jpeg|jpg|png/;
   const mimeType = types.test(file.mimetype);
   const extname = types.test(path.extname(file.originalname).toLowerCase());
   if (mimeType && extname) {
-    return res(null, true);
+    cb(null, true);
+  } else {
+    cb(new Error("Invalid file type. Only JPG or PNG allowed!"));
   }
-  res(new Error("Invalid file type. Try JPG or PNG file!"));
 };
 
 const upload = multer({

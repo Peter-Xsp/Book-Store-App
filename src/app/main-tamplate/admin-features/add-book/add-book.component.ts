@@ -19,18 +19,22 @@ export class AddBookComponent {
   title: string = '';
   description: string = '';
   price: number | null = null;
-  imageURL: string = '';
+  imageFile: File | null = null;
   errorMessage: string = '';
 
   private apiUrl = 'http://localhost:3000/api/books';
 
   onSubmit() {
-    const bookData = {
-      title: this.title,
-      description: this.description,
-      price: this.price,
-      imageURL: this.imageURL,
-    };
+    if (!this.imageFile) {
+      this.errorMessage = 'Please upload an image.';
+      return;
+    }
+
+    const bookData = new FormData();
+    bookData.append('title', this.title);
+    bookData.append('description', this.description);
+    bookData.append('price', this.price?.toString() || '');
+    bookData.append('image', this.imageFile);
 
     this.httpClient.post(this.apiUrl, bookData).subscribe({
       next: () => {
@@ -43,5 +47,13 @@ export class AddBookComponent {
         this.errorMessage = 'Failed to add book. Please try again.';
       },
     });
+  }
+
+  onFileSelected(event: Event) {
+    const target = event.target as HTMLInputElement;
+    if (target.files && target.files.length > 0) {
+      this.imageFile = target.files[0];
+      console.log('Selected file:', this.imageFile); // Log to check the file
+    }
   }
 }

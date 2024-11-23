@@ -22,6 +22,7 @@
           id="description"
           name="description"
           [(ngModel)]="description"
+          required
         />
       </div>
       <div class="form-group">
@@ -35,12 +36,14 @@
         />
       </div>
       <div class="form-group">
-        <label for="imageURL">Image URL</label>
+        <label for="image">Image</label>
         <input
-          type="url"
-          id="imageURL"
-          name="imageURL"
-          [(ngModel)]="imageURL"
+          type="file"
+          id="image"
+          name="image"
+          accept="image/*"
+          (change)="onFileSelected($event)"
+          required
         />
       </div>
       @if (errorMessage) {
