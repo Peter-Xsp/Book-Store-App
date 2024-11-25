@@ -6,6 +6,7 @@ const bookRoutes = require("./routes/bookRoutes");
 const orderRoutes = require("./routes/orderRoutes");
 const userRoutes = require("./routes/userRoutes");
 
+require("dotenv").config();
 const app = express();
 
 connectDB();
