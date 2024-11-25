@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 
 import { HomeBackroundComponent } from '../home-backround.component';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-signup',
@@ -22,7 +23,7 @@ export class SignupComponent {
   password: string = '';
   errorMessage: string = '';
 
-  private apiUrl = 'http://localhost:3000/api/auth/signup';
+  private apiUrl = `${environment.apiUrl}/auth/signup`;
 
   onSubmit() {
     const userData = {

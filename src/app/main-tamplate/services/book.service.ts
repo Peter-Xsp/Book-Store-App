@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 export interface Book {
   title: string;
@@ -14,7 +15,7 @@ export interface Book {
   providedIn: 'root',
 })
 export class BookService {
-  private apiUrl = 'http://localhost:3000/api/books';
+  private apiUrl = `${environment.apiUrl}/books`;
 
   constructor(private http: HttpClient) {}
 

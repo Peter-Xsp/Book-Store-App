@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { RouterLink, Router } from '@angular/router';
 
 import { HomeBackroundComponent } from '../home-backround.component';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginComponent {
   password: string = '';
   errorMessage: string = '';
 
-  private apiUrl = 'http://localhost:3000/api/auth/login';
+  private apiUrl = `${environment.apiUrl}/auth/login`;
 
   onSubmit() {
     const userData = {

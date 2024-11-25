@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { MainTamplateComponent } from '../../main-tamplate.component';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-add-book',
@@ -22,7 +23,7 @@ export class AddBookComponent {
   imageFile: File | null = null;
   errorMessage: string = '';
 
-  private apiUrl = 'http://localhost:3000/api/books';
+  private apiUrl = `${environment.apiUrl}/books`;
 
   onSubmit() {
     if (!this.imageFile) {
