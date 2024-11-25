@@ -46,6 +46,14 @@ export class UpdateBookComponent implements OnInit {
     }
   }
 
+  onFileSelected(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    if (target.files && target.files.length > 0) {
+      this.fileInput = target;
+      console.log('Selected file:', this.fileInput.files[0]);
+    }
+  }
+
   updateBook(): void {
     const formData = new FormData();
 

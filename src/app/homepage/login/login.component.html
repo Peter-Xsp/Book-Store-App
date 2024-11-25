@@ -12,8 +12,19 @@
           id="email"
           name="email"
           [(ngModel)]="email"
+          #emailField="ngModel"
           required
+          email
         />
+        @if (emailField.invalid && emailField.touched) {
+        <div class="error-message">
+          @if (emailField.errors?.['required']) {
+          <small>Email is required.</small>
+          } @if (emailField.errors?.['email']) {
+          <small>Enter a valid email address.</small>
+          }
+        </div>
+        }
       </div>
       <div class="form-group">
         <label for="password">Password</label>
@@ -22,6 +33,7 @@
           id="password"
           name="password"
           [(ngModel)]="password"
+          minlength="5"
           required
         />
       </div>
