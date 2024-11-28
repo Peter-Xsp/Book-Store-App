@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.10.
 
+BookStore is an Angular-based project where users can browse and order books, and admins can manage the inventory by adding, updating, or deleting book details.
+
+Try it live here: BookStore App
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
