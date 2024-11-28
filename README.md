@@ -6,6 +6,11 @@ BookStore is an Angular-based project where users can browse and order books, an
 
 Try it live here: https://book-store-app-theta-three.vercel.app/
 
+In the application, you can test the admin features using the following login credentials:
+
+Email: admin@example.com
+Password: admin
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
