@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 BookStore is an Angular-based project where users can browse and order books, and admins can manage the inventory by adding, updating, or deleting book details.
 
-Try it live here: BookStore App
+Try it live here: https://book-store-app-theta-three.vercel.app/
 
 ## Development server
 
